@@ -47,7 +47,7 @@ public class OBJLoader {
 				Vector2f lTexture = new Vector2f(Float.parseFloat(split[1]),
 						Float.parseFloat(split[2]));
 				Vector2f[] texture2 = new Vector2f[texture.length + 1];
-				System.arraycopy(normal, 0, texture2, 0, texture.length);
+				System.arraycopy(texture, 0, texture2, 0, texture.length);
 				texture2[texture.length] = lTexture;
 				texture = texture2;
 			} else if (split[0].equals("f")) {
