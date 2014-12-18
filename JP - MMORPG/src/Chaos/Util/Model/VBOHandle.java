@@ -45,12 +45,6 @@ public class VBOHandle {
 		for (int i = 0; i < index; i++) {
 			dos.writeFloat(vbo.texcoor[i]);
 		}
-		// Color
-		index = vbo.color.length;
-		dos.writeInt(index);
-		for (int i = 0; i < index; i++) {
-			dos.writeFloat(vbo.color[i]);
-		}
 		dos.close();
 
 	}
@@ -82,11 +76,6 @@ public class VBOHandle {
 		vbo.texcoor = new float[dos.readInt()];
 		for (int i = 0; i < vbo.texcoor.length; i++) {
 			vbo.texcoor[i] = dos.readFloat();
-		}
-		// Color
-		vbo.color = new float[dos.readInt()];
-		for (int i = 0; i < vbo.color.length; i++) {
-			vbo.color[i] = dos.readFloat();
 		}
 		dos.close();
 		return vbo;
