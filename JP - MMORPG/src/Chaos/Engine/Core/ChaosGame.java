@@ -1,5 +1,7 @@
 package Chaos.Engine.Core;
 
-public abstract class ChaosGame {
+import Chaos.Engine.Resource.Resource;
 
+public abstract class ChaosGame {
+	public abstract void loadResources(Resource resources);
 }

@@ -97,7 +97,6 @@ public class OBJLoader {
 			line = dis.readLine();
 		}
 		dis.close();
-		System.out.println("Faces: " + faces);
 		return vbo;
 	}
 }
