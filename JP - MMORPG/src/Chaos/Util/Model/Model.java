@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 public class Model {
-	int length, vboiID, vbotID, vbonID, vboID, vbocID;
+	int length, vboiID, vbotID, vbonID, vboID;
 
 	public Model(VBO vbo) {
 		// ID
@@ -18,7 +18,6 @@ public class Model {
 		vbotID = Handle.createVBO();
 		vbonID = Handle.createVBO();
 		vboiID = Handle.createVBO();
-		vbocID = Handle.createVBO();
 
 		// GENERATE
 		length = vbo.index.length;
@@ -32,9 +31,6 @@ public class Model {
 		FloatBuffer bn = BufferUtils.createFloatBuffer(vbo.normal.length);
 		bn.put(vbo.normal);
 		bn.flip();
-		FloatBuffer bc = BufferUtils.createFloatBuffer(vbo.color.length);
-		bc.put(vbo.color);
-		bc.flip();
 		IntBuffer bi = BufferUtils.createIntBuffer(vbo.index.length);
 		bi.put(vbo.index);
 		bi.flip();
@@ -42,7 +38,6 @@ public class Model {
 		Handle.bufferData(vboID, b);
 		Handle.bufferData(vbotID, bt);
 		Handle.bufferData(vbonID, bn);
-		Handle.bufferData(vbocID, bc);
 		Handle.bufferElementData(vboiID, bi);
 	}
 
@@ -51,10 +46,6 @@ public class Model {
 		ARBVertexBufferObject.glBindBufferARB(
 				ARBVertexBufferObject.GL_ARRAY_BUFFER_ARB, vboID);
 		GL11.glVertexPointer(3, GL11.GL_FLOAT, 0, 0);
-		GL11.glEnableClientState(GL11.GL_COLOR_ARRAY);
-		ARBVertexBufferObject.glBindBufferARB(
-				ARBVertexBufferObject.GL_ARRAY_BUFFER_ARB, vbocID);
-		GL11.glColorPointer(4, GL11.GL_FLOAT, 0, 0);
 		GL11.glEnableClientState(GL11.GL_NORMAL_ARRAY);
 		ARBVertexBufferObject.glBindBufferARB(
 				ARBVertexBufferObject.GL_ARRAY_BUFFER_ARB, vbonID);
@@ -69,7 +60,6 @@ public class Model {
 				GL11.GL_UNSIGNED_INT, 0);
 		GL11.glDisableClientState(GL11.GL_TEXTURE_COORD_ARRAY);
 		GL11.glDisableClientState(GL11.GL_NORMAL_ARRAY);
-		GL11.glDisableClientState(GL11.GL_COLOR_ARRAY);
 		GL11.glDisableClientState(GL11.GL_VERTEX_ARRAY);
 	}
 
@@ -77,7 +67,7 @@ public class Model {
 		Handle.destroyVBO(vboID);
 		Handle.destroyVBO(vboiID);
 		Handle.destroyVBO(vbotID);
-		Handle.destroyVBO(vbocID);
+		Handle.destroyVBO(vbonID);
 		Handle.destroyVBO(vbonID);
 	}
 }
