@@ -24,7 +24,6 @@ public class OBJLoader {
 		Vector3f[] normal = new Vector3f[0];
 		Vector2f[] texture = new Vector2f[0];
 		int index = 0;
-		int faces = 0;
 		DataInputStream dis = new DataInputStream(new FileInputStream(file));
 		String line = dis.readLine();
 		while (line != null) {
@@ -51,7 +50,6 @@ public class OBJLoader {
 				texture2[texture.length] = lTexture;
 				texture = texture2;
 			} else if (split[0].equals("f")) {
-				faces++;
 				for (int i = 1; i < 4; i++) {
 					String[] lIndex = split[i].split("/");
 					// Add Vertices
