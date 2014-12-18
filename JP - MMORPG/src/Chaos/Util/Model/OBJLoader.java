@@ -15,7 +15,6 @@ public class OBJLoader {
 	@SuppressWarnings("deprecation")
 	public static VBO load(File file) throws IOException {
 		VBO vbo = new VBO();
-		vbo.color = new float[0];
 		vbo.normal = new float[0];
 		vbo.texcoor = new float[0];
 		vbo.vertex = new float[0];
@@ -68,14 +67,6 @@ public class OBJLoader {
 							.parseInt(lIndex[2]) - 1].y;
 					vbo.normal[vbo.normal.length - 1] = normal[Integer
 							.parseInt(lIndex[2]) - 1].z;
-					// Add Colors
-					float[] vbocolor = vbo.color;
-					vbo.color = new float[vbocolor.length + 4];
-					System.arraycopy(vbocolor, 0, vbo.color, 0, vbocolor.length);
-					vbo.color[vbo.color.length - 4] = 1.0f;
-					vbo.color[vbo.color.length - 3] = 1.0f;
-					vbo.color[vbo.color.length - 2] = 1.0f;
-					vbo.color[vbo.color.length - 1] = 1.0f;
 					// Add Textures
 					float[] vbotexcoor = vbo.texcoor;
 					vbo.texcoor = new float[vbotexcoor.length + 2];
