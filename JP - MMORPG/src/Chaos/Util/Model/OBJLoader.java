@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
 public class OBJLoader {
@@ -21,6 +22,7 @@ public class OBJLoader {
 		vbo.index = new int[0];
 		Vector3f[] vertex = new Vector3f[0];
 		Vector3f[] normal = new Vector3f[0];
+		Vector2f[] texture = new Vector2f[0];
 		int index = 0;
 		int faces = 0;
 		DataInputStream dis = new DataInputStream(new FileInputStream(file));
@@ -41,6 +43,13 @@ public class OBJLoader {
 				System.arraycopy(normal, 0, normal2, 0, normal.length);
 				normal2[normal.length] = lNormal;
 				normal = normal2;
+			} else if (split[0].equals("vt")) {
+				Vector2f lTexture = new Vector2f(Float.parseFloat(split[1]),
+						Float.parseFloat(split[2]));
+				Vector2f[] texture2 = new Vector2f[texture.length + 1];
+				System.arraycopy(normal, 0, texture2, 0, texture.length);
+				texture2[texture.length] = lTexture;
+				texture = texture2;
 			} else if (split[0].equals("f")) {
 				faces++;
 				for (int i = 1; i < 4; i++) {
@@ -72,8 +81,10 @@ public class OBJLoader {
 					vbo.texcoor = new float[vbotexcoor.length + 2];
 					System.arraycopy(vbotexcoor, 0, vbo.texcoor, 0,
 							vbotexcoor.length);
-					vbo.texcoor[vbo.texcoor.length - 2] = 0;
-					vbo.texcoor[vbo.texcoor.length - 1] = 0;
+					vbo.texcoor[vbo.texcoor.length - 2] = texture[Integer
+							.parseInt(lIndex[1]) - 1].x;
+					vbo.texcoor[vbo.texcoor.length - 1] = texture[Integer
+							.parseInt(lIndex[1]) - 1].y;
 					// Add Index
 					int[] vboindex = vbo.index;
 					vbo.index = new int[vboindex.length + 1];
