@@ -3,7 +3,7 @@
  */
 
 /**
- * @author Peter
+ * @author Peter, Jonas
  *
  */
 public class JP {
