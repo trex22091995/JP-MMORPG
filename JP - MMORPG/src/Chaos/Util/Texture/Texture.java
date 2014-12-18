@@ -1,4 +1,4 @@
-package Engine.Util.Texture;
+package Chaos.Util.Texture;
 
 import java.io.FileInputStream;
 import java.io.IOException;
