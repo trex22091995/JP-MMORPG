@@ -1,0 +1,4 @@
+-OBJLoader: (Mehrere Texturen pro OBJ Datei)
+  -Converter schreiben der OBJ Dateien in ->Mehrere<- VBO dateien macht wenn nötig
+  
+ 
