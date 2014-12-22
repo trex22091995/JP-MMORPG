@@ -8,15 +8,17 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
-import Chaos.Engine.Resource.Resource;
 import Chaos.Util.Misc;
+import Chaos.Util.Texture.Text;
 
 public class Chaos {
+	public static Text text;
 	final ChaosGame game;
 	int width = 800, height = 600;
 	DisplayMode dm = new DisplayMode(800, 600);
 	String title = "Chaos Engine";
-	boolean fullscreen = false, ingame = false;
+	boolean fullscreen = false, ingame = false, enginescreen = true;
+	float enginescreentime = 0;
 	long time;
 	Resource res;
 
@@ -66,14 +68,37 @@ public class Chaos {
 			Display.create();
 			Mouse.create();
 			Keyboard.create();
+			text = new Text();
 			// Loop
-			res = new Resource();
+			res = new Resource(this);
 			game.loadResources(res);
 			getDelta();
 			while (!Display.isCloseRequested()) {
 				if (!ingame) {
-
-					// TODO Preview Screen and Resource Loader
+					GL11.glClear(GL11.GL_COLOR_BUFFER_BIT
+							| GL11.GL_DEPTH_BUFFER_BIT
+							| GL11.GL_STENCIL_BUFFER_BIT);
+					init2D();
+					if (enginescreen) {
+						enginescreentime += getDelta();
+						if (enginescreentime >= 3) {
+							enginescreen = false;
+							res.start();
+						}
+						if (enginescreentime >= 1.5f) {
+							GL11.glColor4f(1, 1, 1,
+									(3 - enginescreentime) / 1.5f);
+						} else {
+							GL11.glColor4f(1, 1, 1, enginescreentime / 1.5f);
+						}
+						GL11.glPushMatrix();
+						GL11.glTranslatef(width / 2f, height / 2f - 32f, 0);
+						text.draw(">> Chaos Engine <<", 4, Text.ALIGN.CENTER);
+						GL11.glPopMatrix();
+					} else {
+						// Resource Loader
+						res.render();
+					}
 				} else {
 					// actual game
 					float delta = getDelta();
@@ -119,7 +144,7 @@ public class Chaos {
 	private final void init2D() {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
-		GL11.glOrtho(0, 1920, 0, 1080, 1, -1);
+		GL11.glOrtho(0, width, 0, height, 1, -1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		GL11.glLoadIdentity();
 		GL11.glDisable(GL11.GL_CULL_FACE);
@@ -127,14 +152,12 @@ public class Chaos {
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glAlphaFunc(GL11.GL_GREATER, 0.0f);
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
 	}
 
 	private final void init3D() {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
-		GLU.gluPerspective(60, 1920f / 1080f, 0.1f, 100f);
+		GLU.gluPerspective(60, width / height, 0.1f, 100f);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		GL11.glLoadIdentity();
 		GL11.glEnable(GL11.GL_CULL_FACE);
@@ -142,7 +165,5 @@ public class Chaos {
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glAlphaFunc(GL11.GL_GREATER, 0.0f);
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
 	}
 }
