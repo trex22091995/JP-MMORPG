@@ -12,6 +12,8 @@ import Chaos.Util.Model.OBJLoader;
 import Chaos.Util.Model.VBO;
 import Chaos.Util.Model.VBOHandle;
 import Chaos.Util.Texture.Text;
+import Chaos.Util.Texture.Texture;
+import Chaos.Util.Texture.TextureStore;
 
 public class Resource {
 	/*
@@ -26,6 +28,7 @@ public class Resource {
 	// For actual Loading
 	HashMap<String, VBO> vboload = new HashMap<String, VBO>();
 	HashMap<String, String> texload = new HashMap<String, String>();
+	int texcount = 0;
 
 	// For Resource Loader
 	HashMap<String, String> vbores = new HashMap<String, String>();
@@ -70,6 +73,19 @@ public class Resource {
 				ModelStore.add(name, model);
 			}
 			chaos.ingame = true;
+		}
+		// Loading Textures
+		if (texcount < texload.keySet().toArray().length) {
+			try {
+				Texture tex = new Texture(texload.get(texload.keySet()
+						.toArray()[texcount]));
+				TextureStore.put((String) texload.keySet().toArray()[texcount],
+						tex);
+			} catch (IOException e) {
+				Misc.err(e);
+			}
+			texcount++;
+			current++;
 		}
 	}
 
