@@ -1,7 +1,16 @@
 package Chaos.Engine.Core;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 import org.lwjgl.opengl.GL11;
 
+import Chaos.Util.Misc;
+import Chaos.Util.Model.Model;
+import Chaos.Util.Model.ModelStore;
+import Chaos.Util.Model.OBJLoader;
+import Chaos.Util.Model.VBO;
+import Chaos.Util.Model.VBOHandle;
 import Chaos.Util.Texture.Text;
 
 public class Resource {
@@ -14,6 +23,12 @@ public class Resource {
 	int amount, current;
 	Loader loader;
 	Chaos chaos;
+	// For actual Loading
+	HashMap<String, VBO> vboload = new HashMap<String, VBO>();
+	HashMap<String, String> texload = new HashMap<String, String>();
+
+	// For Resource Loader
+	HashMap<String, String> vbores = new HashMap<String, String>();
 
 	public Resource(Chaos chaos) {
 		loader = new Loader(this);
@@ -23,11 +38,13 @@ public class Resource {
 	// Texture Loading
 	public void addTexture(String name, String path) {
 		amount++;
+		texload.put(name, path);
 	}
 
 	// Model Loading
 	public void addModel(String name, String path) {
 		amount++;
+		this.vbores.put(name, path);
 	}
 
 	// Shader Loading
@@ -48,7 +65,10 @@ public class Resource {
 		GL11.glPopMatrix();
 		if (current == amount) {
 			// final step: put vbo as models into graphics card
-
+			for (String name : vboload.keySet()) {
+				Model model = new Model(vboload.get(name));
+				ModelStore.add(name, model);
+			}
 			chaos.ingame = true;
 		}
 	}
@@ -67,7 +87,27 @@ public class Resource {
 
 		public void run() {
 			// TODO (For now only load VBO/OBJ files into vbo objects)
-
+			for (String name : vbores.keySet()) {
+				current++;
+				String path = vbores.get(name);
+				if (path.endsWith(".vbo")) {
+					// VBO File
+					try {
+						VBO vbo = VBOHandle.load(path);
+						res.vboload.put(name, vbo);
+					} catch (IOException e) {
+						Misc.err(e);
+					}
+				} else if (path.endsWith(".obj")) {
+					// OBJ File
+					try {
+						VBO vbo = OBJLoader.load(path);
+						res.vboload.put(name, vbo);
+					} catch (IOException e) {
+						Misc.err(e);
+					}
+				}
+			}
 		}
 	}
 }
