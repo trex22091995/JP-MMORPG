@@ -79,10 +79,18 @@ public class OBJLoader {
 					vbo.texcoor = new float[vbotexcoor.length + 2];
 					System.arraycopy(vbotexcoor, 0, vbo.texcoor, 0,
 							vbotexcoor.length);
-					vbo.texcoor[vbo.texcoor.length - 2] = texture[Integer
-							.parseInt(lIndex[1]) - 1].x;
-					vbo.texcoor[vbo.texcoor.length - 1] = texture[Integer
-							.parseInt(lIndex[1]) - 1].y;
+					if (lIndex[1].equals("")) {
+						vbo.texcoor[vbo.texcoor.length - 2] = 0;
+					} else {
+						vbo.texcoor[vbo.texcoor.length - 2] = texture[Integer
+								.parseInt(lIndex[1]) - 1].x;
+					}
+					if (lIndex[1].equals("")) {
+						vbo.texcoor[vbo.texcoor.length - 1] = 0;
+					} else {
+						vbo.texcoor[vbo.texcoor.length - 1] = texture[Integer
+								.parseInt(lIndex[1]) - 1].y;
+					}
 					// Add Index
 					int[] vboindex = vbo.index;
 					vbo.index = new int[vboindex.length + 1];
