@@ -88,7 +88,6 @@ public class Resource {
 		public void run() {
 			// TODO (For now only load VBO/OBJ files into vbo objects)
 			for (String name : vbores.keySet()) {
-				current++;
 				String path = vbores.get(name);
 				if (path.endsWith(".vbo")) {
 					// VBO File
@@ -107,6 +106,7 @@ public class Resource {
 						Misc.err(e);
 					}
 				}
+				current++;
 			}
 		}
 	}
