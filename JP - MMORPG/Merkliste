@@ -1,5 +1,38 @@
 -OBJLoader: (Mehrere Texturen pro OBJ Datei)
-  -Converter schreiben der OBJ Dateien in ->Mehrere<- VBO dateien macht wenn n�tig
+  -Converter schreiben der OBJ Dateien in ->Mehrere<- VBO dateien macht wenn nötig
+-Collider
+  -Riesige Anzahl von Collisionen müssen (möglichst effizient) ausgewertet werden
+
+
+
+
+
+
+-Monster 
+  -Eine möglichst unterschiedliche Steuerung der Monster durch KI
+  -Viele unterschiedliche Monster
+  	-Wassermonster
+  	-Krabbenartige Wesen
+  	-Wölfe 
+  	-Ratten (Jedes MMORPG hat Ratten :D )
+  	-Affenartige Wesen (Bild folgt)
+-Items
+  -Eine möglichst große Anzahl von Items erfreut den Spieler
+  -Premium Shop kann unsere Arbeit finanzieren
+  -Itemkategorien:
+    -Waffen
+    -Rüstung
+    -Schmuck (möglich)
+    -Nahrung (HP-Wiederherstellung)
+    -Pets (Haustiere die Aufgaben wie Beschützen oder Itemaufsammeln erlernen können?)
+-Story
+  -Überlegen einer Grundstory zu folgenden Problemen:
+    -Warum gibt es komische Monster auf dieser Insel?
+    -Warum werden soviele Menschen an diese Küste angespült?
+      -Falls der Start des Spiels dies vorsieht
+-Minigame-Ideen:
+ -PvP (Hunger Games)
+ -Survival (Maze Runner)
   
  
  
