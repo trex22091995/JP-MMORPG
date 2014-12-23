@@ -35,6 +35,7 @@ public class Test extends ChaosGame {
 		resources.addModel("Monkey4", "./Resources/untitled.obj");
 		resources.addModel("Monkey5", "./Resources/untitled.obj");
 		resources.addModel("Monkey6", "./Resources/untitled.obj");
+		// Nur zur demonstration vom Ladebildschirm 6 mal das gleiche xD
 	}
 
 	// Update Loop
@@ -48,10 +49,40 @@ public class Test extends ChaosGame {
 
 	// 3D Rendering
 	public void render3D() {
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 		GL11.glColor3f(0.2f, 0.8f, 0.8f);
-		GL11.glTranslatef(0, 0, -5);
-		GL11.glRotatef(rot, 0, 1, 0);
+		GL11.glPushMatrix();
+		GL11.glTranslatef(-5, 4, -15);
+		GL11.glRotatef(rot, 1, 0, 0);
 		ModelStore.get("Monkey1").draw();
+		GL11.glPopMatrix();
+		GL11.glPushMatrix();
+		GL11.glTranslatef(-5, -4, -15);
+		GL11.glRotatef(rot, -1, 0, 0);
+		ModelStore.get("Monkey2").draw();
+		GL11.glPopMatrix();
+
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0, 4, -15);
+		GL11.glRotatef(rot, 0, 1, 0);
+		ModelStore.get("Monkey3").draw();
+		GL11.glPopMatrix();
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0, -4, -15);
+		GL11.glRotatef(rot, 0, -1, 0);
+		ModelStore.get("Monkey4").draw();
+		GL11.glPopMatrix();
+
+		GL11.glPushMatrix();
+		GL11.glTranslatef(5, 4, -15);
+		GL11.glRotatef(rot, 0, 0, 1);
+		ModelStore.get("Monkey5").draw();
+		GL11.glPopMatrix();
+		GL11.glPushMatrix();
+		GL11.glTranslatef(5, -4, -15);
+		GL11.glRotatef(rot, 0, 0, -1);
+		ModelStore.get("Monkey6").draw();
+		GL11.glPopMatrix();
 	}
 
 	// 2D Rendering
