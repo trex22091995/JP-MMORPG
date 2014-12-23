@@ -61,7 +61,6 @@ public class Test extends ChaosGame {
 		GL11.glRotatef(rot, -1, 0, 0);
 		ModelStore.get("Monkey2").draw();
 		GL11.glPopMatrix();
-
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0, 4, -15);
 		GL11.glRotatef(rot, 0, 1, 0);
@@ -72,7 +71,6 @@ public class Test extends ChaosGame {
 		GL11.glRotatef(rot, 0, -1, 0);
 		ModelStore.get("Monkey4").draw();
 		GL11.glPopMatrix();
-
 		GL11.glPushMatrix();
 		GL11.glTranslatef(5, 4, -15);
 		GL11.glRotatef(rot, 0, 0, 1);
