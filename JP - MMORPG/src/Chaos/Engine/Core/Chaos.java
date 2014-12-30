@@ -13,7 +13,7 @@ import Chaos.Util.Texture.Text;
 
 public class Chaos {
 	public static Text text;
-	ChaosGame game;
+	final ChaosGame game;
 	int width = 800, height = 600;
 	DisplayMode dm = new DisplayMode(800, 600);
 	String title = "Chaos Engine";
@@ -71,35 +71,9 @@ public class Chaos {
 			text = new Text();
 			// Loop
 			res = new Resource(this);
-			game.loadResources(res);		
-			
+			game.loadResources(res);
 			getDelta();
 			while (!Display.isCloseRequested()) {
-				
-				//When an user of this engine decide to use our scene system, than is here the changing of this scenes.
-				if(game instanceof Scene){
-					Scene curScene = (Scene)game;
-					Scene nextScene = curScene.getNextScene();
-					if (nextScene != null){
-						//Change Scene
-						curScene.SceneDestroy();
-						
-						/*TODO: 
-						 * The old resources have to been deleted
-						 * allthough there is no displaying of the loading resource screen
-						*/
-						res = new Resource(this);
-						
-						
-						game = nextScene;
-						res = new Resource(this);
-						game.loadResources(res);
-						
-					}
-				}
-				
-				
-				
 				if (!ingame) {
 					GL11.glClear(GL11.GL_COLOR_BUFFER_BIT
 							| GL11.GL_DEPTH_BUFFER_BIT
