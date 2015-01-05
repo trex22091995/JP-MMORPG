@@ -7,6 +7,7 @@ import Chaos.Engine.Core.ChaosGame;
 import Chaos.Engine.Core.Resource;
 import Chaos.Util.Model.ModelStore;
 import Chaos.Util.Texture.Text;
+import Chaos.Util.Texture.TextureStore;
 
 public class Test extends ChaosGame {
 	// Start
@@ -29,12 +30,8 @@ public class Test extends ChaosGame {
 	// Loop
 	public void loadResources(Resource resources) {
 		// Resource Loading (Only Models for now)
-		resources.addModel("Monkey1", "./Resources/untitled.obj");
-		resources.addModel("Monkey2", "./Resources/untitled.obj");
-		resources.addModel("Monkey3", "./Resources/untitled.obj");
-		resources.addModel("Monkey4", "./Resources/untitled.obj");
-		resources.addModel("Monkey5", "./Resources/untitled.obj");
-		resources.addModel("Monkey6", "./Resources/untitled.obj");
+		resources.addModel("Model", "./Resources/chr_knight.obj");
+		resources.addTexture("Texture", "./Resources/chr_knight.png");
 		// Nur zur demonstration vom Ladebildschirm 6 mal das gleiche xD
 	}
 
@@ -49,37 +46,37 @@ public class Test extends ChaosGame {
 
 	// 3D Rendering
 	public void render3D() {
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
+		TextureStore.get("Texture").bind();
 		GL11.glColor3f(0.2f, 0.8f, 0.8f);
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-5, 4, -15);
 		GL11.glRotatef(rot, 1, 0, 0);
-		ModelStore.get("Monkey1").draw();
+		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-5, -4, -15);
 		GL11.glRotatef(rot, -1, 0, 0);
-		ModelStore.get("Monkey2").draw();
+		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0, 4, -15);
 		GL11.glRotatef(rot, 0, 1, 0);
-		ModelStore.get("Monkey3").draw();
+		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0, -4, -15);
 		GL11.glRotatef(rot, 0, -1, 0);
-		ModelStore.get("Monkey4").draw();
+		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(5, 4, -15);
 		GL11.glRotatef(rot, 0, 0, 1);
-		ModelStore.get("Monkey5").draw();
+		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(5, -4, -15);
 		GL11.glRotatef(rot, 0, 0, -1);
-		ModelStore.get("Monkey6").draw();
+		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 	}
 
