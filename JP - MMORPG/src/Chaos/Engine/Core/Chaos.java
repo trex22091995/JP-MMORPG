@@ -47,8 +47,6 @@ public class Chaos {
 		}
 	}
 
-	// Test
-
 	// Setzen des Titels
 	public void setScreenTitle(String title) {
 		this.title = title;
@@ -104,17 +102,17 @@ public class Chaos {
 				} else {
 					// actual game
 					float delta = getDelta();
-					game.update(delta);
+					game.engineUpdate(delta);
 					GL11.glClear(GL11.GL_COLOR_BUFFER_BIT
 							| GL11.GL_DEPTH_BUFFER_BIT
 							| GL11.GL_STENCIL_BUFFER_BIT);
 					init3D();
 					GL11.glPushMatrix();
-					game.render3D();
+					game.engineRender3D();
 					GL11.glPopMatrix();
 					init2D();
 					GL11.glPushMatrix();
-					game.render2D();
+					game.engineRender2D();
 					GL11.glPopMatrix();
 				}
 				Display.update();
