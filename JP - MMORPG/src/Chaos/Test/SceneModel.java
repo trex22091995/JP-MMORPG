@@ -12,7 +12,6 @@ import Chaos.Util.Texture.Texture;
 import Chaos.Util.Texture.TextureStore;
 
 public class SceneModel extends Scene {
-	public float rot;
 
 	public void create() {
 		try {
@@ -45,8 +44,10 @@ public class SceneModel extends Scene {
 		TextureStore.rem("Texture");
 	}
 
+	public float rot;
+
 	public void update(float delta) {
-		rot += delta * 30;
+		rot += delta * 30f;
 		if (rot >= 360)
 			rot -= 360;
 	}
