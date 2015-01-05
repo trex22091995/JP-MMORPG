@@ -46,36 +46,42 @@ public class Test extends ChaosGame {
 
 	// 3D Rendering
 	public void render3D() {
+		GL11.glColor3f(1, 1, 1);
 		TextureStore.get("Texture").bind();
-		GL11.glColor3f(0.2f, 0.8f, 0.8f);
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-5, 4, -15);
 		GL11.glRotatef(rot, 1, 0, 0);
+		GL11.glScalef(.1f, .1f, .1f);
 		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-5, -4, -15);
 		GL11.glRotatef(rot, -1, 0, 0);
+		GL11.glScalef(.1f, .1f, .1f);
 		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0, 4, -15);
 		GL11.glRotatef(rot, 0, 1, 0);
+		GL11.glScalef(.1f, .1f, .1f);
 		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0, -4, -15);
 		GL11.glRotatef(rot, 0, -1, 0);
+		GL11.glScalef(.1f, .1f, .1f);
 		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(5, 4, -15);
 		GL11.glRotatef(rot, 0, 0, 1);
+		GL11.glScalef(.1f, .1f, .1f);
 		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(5, -4, -15);
 		GL11.glRotatef(rot, 0, 0, -1);
+		GL11.glScalef(.1f, .1f, .1f);
 		ModelStore.get("Model").draw();
 		GL11.glPopMatrix();
 	}
