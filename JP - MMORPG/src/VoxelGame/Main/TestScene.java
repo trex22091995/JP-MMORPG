@@ -11,6 +11,7 @@ import Chaos.Util.Model.Model;
 import Chaos.Util.Model.ModelStore;
 import Chaos.Util.Model.OBJLoader;
 import Chaos.Util.Model.VBO;
+import Chaos.Util.Noise.Noise;
 import Chaos.Util.Texture.Texture;
 import Chaos.Util.Texture.TextureStore;
 
@@ -40,38 +41,41 @@ public class TestScene extends Scene {
 		// (Random chunks)
 		VoxelBuilder vb = new VoxelBuilder(16, 16, 16);
 		VBO vbo;
-		float ns;
 		Model model;
-		int i;
-		float all = 0;
-		for (i = 0; i < 1; i++) {
-			randomly(vb);
-			vbo = vb.create();
-			ns = System.nanoTime();
-			model = new Model(vbo);
-			ns = System.nanoTime() - ns;
-			Misc.log("Model: " + i + " Millieseconds: " + (ns / 1000000f));
-			ModelStore.add("Random" + i, model);
-			all += ns / 1000000f;
-		}
-		Misc.log("Amount: " + i + " Millieseconds for each Model: "
-				+ (all / (float) i));
+		noise = new Noise(1, 5, 2);
+		randomly(vb);
+		vbo = vb.create();
+		model = new Model(vbo);
+		ModelStore.add("Random1", model);
 		// END TEST
+
+		Misc.log("+0.6f = " + (int) Math.floor(0.6f));
+		Misc.log("+0.5f = " + (int) Math.floor(0.5f));
+		Misc.log("+0.4f = " + (int) Math.floor(0.4f));
+		Misc.log("-0.4f = " + (int) Math.floor(-0.4f));
+		Misc.log("-0.5f = " + (int) Math.floor(-0.5f));
+		Misc.log("-0.6f = " + (int) Math.floor(-0.6f));
 		Mouse.setGrabbed(true);
 	}
+
+	Noise noise;
 
 	private void randomly(VoxelBuilder vb) {
 		for (int x = 0; x < 16; x++) {
 			for (int y = 0; y < 16; y++) {
+				int h = (int) Math.floor((noise.get(x, y) + 1f) * 8f);
 				for (int z = 0; z < 16; z++) {
-					if (Math.random() >= 0.5f) {
-						// put a block
-						int num = (int) (Math.random() * 256f);
-						Voxel voxel = new Voxel(num);
-						vb.add(voxel, x, y, z);
+					if (z == h) {
+						// Gras
+						Voxel voxel = new Voxel(83);
+						vb.add(voxel, x, z, y);
+					} else if (z < h) {
+						// Dirt
+						Voxel voxel = new Voxel(95);
+						vb.add(voxel, x, z, y);
 					} else {
-						// clear block
-						vb.remove(x, y, z);
+						// Air
+						vb.remove(x, z, y);
 					}
 				}
 			}
@@ -97,12 +101,43 @@ public class TestScene extends Scene {
 		// TEST RENDER
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0, -4, -15);
+		// Box
+		GL11.glColor3f(1, 0, 0);
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
+		GL11.glBegin(GL11.GL_LINES);
+		// aussen
+		GL11.glVertex3f(0, 0, 0);
+		GL11.glVertex3f(0, 16, 0);
+		GL11.glVertex3f(16, 0, 0);
+		GL11.glVertex3f(16, 16, 0);
+		GL11.glVertex3f(16, 0, 16);
+		GL11.glVertex3f(16, 16, 16);
+		GL11.glVertex3f(0, 0, 16);
+		GL11.glVertex3f(0, 16, 16);
+		// oben
+		GL11.glVertex3f(0, 16, 0);
+		GL11.glVertex3f(16, 16, 0);
+		GL11.glVertex3f(16, 16, 0);
+		GL11.glVertex3f(16, 16, 16);
+		GL11.glVertex3f(16, 16, 16);
+		GL11.glVertex3f(0, 16, 16);
+		GL11.glVertex3f(0, 16, 16);
+		GL11.glVertex3f(0, 16, 0);
+		// unten
+		GL11.glVertex3f(0, 0, 0);
+		GL11.glVertex3f(16, 0, 0);
+		GL11.glVertex3f(16, 0, 0);
+		GL11.glVertex3f(16, 0, 16);
+		GL11.glVertex3f(16, 0, 16);
+		GL11.glVertex3f(0, 0, 16);
+		GL11.glVertex3f(0, 0, 16);
+		GL11.glVertex3f(0, 0, 0);
+		GL11.glEnd();
+		// Box
 		GL11.glColor3f(1, 1, 1);
 		TextureStore.get("Texture").bind();
 		GL11.glScalef(1, 1, 1);
-		for (int i = 0; i < 1; i++) {
-			ModelStore.get("Random" + i).draw();
-		}
+		ModelStore.get("Random1").draw();
 		GL11.glPopMatrix();
 		// END TEST
 		GL11.glPushMatrix();
