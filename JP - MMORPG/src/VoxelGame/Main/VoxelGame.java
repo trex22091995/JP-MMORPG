@@ -97,11 +97,8 @@ public class VoxelGame extends ChaosGame {
 
 	// 2D Rendering
 	public void render2D() {
-		GL11.glColor4f(1, 1, 1, 1);
-		GL11.glTranslatef(400, 300, 0);
-		Chaos.text.draw("Test Screen", 2, Text.ALIGN.CENTER);
 		GL11.glColor4f(0.8f, 0.6f, 0.3f, 1.0f);
-		GL11.glTranslatef(400, -300 + 8, 0);
+		GL11.glTranslatef(800, 8, 0);
 		Chaos.text.draw("Copyright (c) 2014", .5f, Text.ALIGN.RIGHT);
 		GL11.glTranslatef(0, -8, 0);
 		Chaos.text.draw("Peter Esser & Jonas Prinz", .5f, Text.ALIGN.RIGHT);

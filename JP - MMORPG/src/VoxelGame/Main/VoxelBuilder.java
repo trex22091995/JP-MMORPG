@@ -24,12 +24,10 @@ public class VoxelBuilder {
 		VBO vbo = new VBO();
 		// Count
 		int faces = 0;
-		int cubes = 0;
 		for (int x = 0; x < voxels.length; x++) {
 			for (int y = 0; y < voxels[0].length; y++) {
 				for (int z = 0; z < voxels[0][0].length; z++) {
 					if (voxels[x][y][z] != null) {
-						cubes++;
 						boolean top = false, bot = false, left = false, right = false, front = false, back = false;
 						if (y == voxels[0].length - 1) {
 							top = true;
