@@ -53,6 +53,16 @@ public class OBJLoader {
 				for (int i = 1; i < 4; i++) {
 					String[] lIndex = split[i].split("/");
 					// Add Vertices
+					
+					/*
+					 * 
+					 * Hier ist es besser, in eine Headerdatei der vbo datei
+					 * die anzahl der verticies etc. zu übergeben!
+					 * 
+					*/
+					
+					
+					
 					float[] vbovertex = vbo.vertex;
 					vbo.vertex = new float[vbovertex.length + 3];
 					System.arraycopy(vbovertex, 0, vbo.vertex, 0,
