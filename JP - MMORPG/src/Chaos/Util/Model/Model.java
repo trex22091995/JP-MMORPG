@@ -13,7 +13,6 @@ public class Model {
 
 	public Model(VBO vbo) {
 		// ID
-
 		vboID = Handle.createVBO();
 		vbotID = Handle.createVBO();
 		vbonID = Handle.createVBO();
