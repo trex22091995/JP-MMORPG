@@ -171,14 +171,14 @@ public class VoxelBuilder {
 							vbo.vertex[10 + faces * 12] = y + 1;
 							vbo.vertex[11 + faces * 12] = z + 1;
 							// Texcoor
-							vbo.texcoor[faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[1 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[2 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[3 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[4 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[5 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[6 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[7 + faces * 8] = voxels[x][y][z].y;
+							vbo.texcoor[faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[1 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[2 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[3 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[4 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[5 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
+							vbo.texcoor[6 + faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[7 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
 							// Normal
 							vbo.normal[faces * 12] = 0;
 							vbo.normal[1 + faces * 12] = 1;
@@ -216,14 +216,14 @@ public class VoxelBuilder {
 							vbo.vertex[10 + faces * 12] = y;
 							vbo.vertex[11 + faces * 12] = z + 1;
 							// Texcoor
-							vbo.texcoor[faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[1 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[2 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[3 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[4 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[5 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[6 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[7 + faces * 8] = voxels[x][y][z].y;
+							vbo.texcoor[faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[1 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[2 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[3 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[4 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[5 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
+							vbo.texcoor[6 + faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[7 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
 							// Normal
 							vbo.normal[faces * 12] = 0;
 							vbo.normal[1 + faces * 12] = -1;
@@ -261,14 +261,14 @@ public class VoxelBuilder {
 							vbo.vertex[10 + faces * 12] = y;
 							vbo.vertex[11 + faces * 12] = z + 1;
 							// Texcoor
-							vbo.texcoor[faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[1 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[2 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[3 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[4 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[5 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[6 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[7 + faces * 8] = voxels[x][y][z].y;
+							vbo.texcoor[faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[1 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[2 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[3 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[4 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[5 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
+							vbo.texcoor[6 + faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[7 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
 							// Normal
 							vbo.normal[faces * 12] = 0;
 							vbo.normal[1 + faces * 12] = 0;
@@ -306,14 +306,14 @@ public class VoxelBuilder {
 							vbo.vertex[10 + faces * 12] = y;
 							vbo.vertex[11 + faces * 12] = z;
 							// Texcoor
-							vbo.texcoor[faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[1 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[2 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[3 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[4 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[5 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[6 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[7 + faces * 8] = voxels[x][y][z].y;
+							vbo.texcoor[faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[1 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[2 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[3 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[4 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[5 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
+							vbo.texcoor[6 + faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[7 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
 							// Normal
 							vbo.normal[faces * 12] = 0;
 							vbo.normal[1 + faces * 12] = 0;
@@ -351,14 +351,14 @@ public class VoxelBuilder {
 							vbo.vertex[10 + faces * 12] = y;
 							vbo.vertex[11 + faces * 12] = z + 1;
 							// Texcoor
-							vbo.texcoor[faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[1 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[2 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[3 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[4 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[5 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[6 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[7 + faces * 8] = voxels[x][y][z].y;
+							vbo.texcoor[faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[1 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[2 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[3 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[4 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[5 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
+							vbo.texcoor[6 + faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[7 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
 							// Normal
 							vbo.normal[faces * 12] = 1;
 							vbo.normal[1 + faces * 12] = 0;
@@ -396,14 +396,14 @@ public class VoxelBuilder {
 							vbo.vertex[10 + faces * 12] = y;
 							vbo.vertex[11 + faces * 12] = z + 1;
 							// Texcoor
-							vbo.texcoor[faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[1 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[2 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[3 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[4 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[5 + faces * 8] = voxels[x][y][z].y;
-							vbo.texcoor[6 + faces * 8] = voxels[x][y][z].x;
-							vbo.texcoor[7 + faces * 8] = voxels[x][y][z].y;
+							vbo.texcoor[faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[1 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[2 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[3 + faces * 8] = (voxels[x][y][z].y + 0.0001f);
+							vbo.texcoor[4 + faces * 8] = (voxels[x][y][z].x + 0.9999f) / 256f;
+							vbo.texcoor[5 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
+							vbo.texcoor[6 + faces * 8] = (voxels[x][y][z].x + 0.0001f) / 256f;
+							vbo.texcoor[7 + faces * 8] = (voxels[x][y][z].y + 0.9999f);
 							// Normal
 							vbo.normal[faces * 12] = -1;
 							vbo.normal[1 + faces * 12] = 0;

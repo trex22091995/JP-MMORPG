@@ -17,6 +17,7 @@ import Chaos.Util.Texture.TextureStore;
 
 public class TestScene extends Scene {
 	Camera cam = new Camera(0, 0, 0);
+	Shader shader;
 
 	public void create() {
 		try {
@@ -31,9 +32,9 @@ public class TestScene extends Scene {
 			ModelStore.add("Model5",
 					new Model(OBJLoader.load("./Resources/chr_rain.obj")));
 			ModelStore.add("Model6",
-					new Model(OBJLoader.load("./Resources/chr_sword.obj")));
-			TextureStore.put("Texture", new Texture(
-					"./Resources/chr_knight.png"));
+					new Model(OBJLoader.load("./Resources/kitpvp_Char_1.obj")));
+			TextureStore.put("Texture", new Texture("./Resources/palette.png"));
+			shader = new Shader("./Resources/ambient");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -135,9 +136,11 @@ public class TestScene extends Scene {
 		GL11.glEnd();
 		// Box
 		GL11.glColor3f(1, 1, 1);
+		shader.bind();
 		TextureStore.get("Texture").bind();
 		GL11.glScalef(1, 1, 1);
 		ModelStore.get("Random1").draw();
+		shader.unbind();
 		GL11.glPopMatrix();
 		// END TEST
 		GL11.glPushMatrix();
@@ -145,11 +148,13 @@ public class TestScene extends Scene {
 		GL11.glColor3f(0.2f, 0.6f, 0.3f);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 		GL11.glBegin(GL11.GL_QUADS);
+		GL11.glNormal3f(0, -1, 0);
 		GL11.glVertex3f(-3, 0, 3);
 		GL11.glVertex3f(3, 0, 3);
 		GL11.glVertex3f(3, 0, -3);
 		GL11.glVertex3f(-3, 0, -3);
 		GL11.glEnd();
+		shader.bind();
 		GL11.glColor3f(1, 1, 1);
 		TextureStore.get("Texture").bind();
 		GL11.glPushMatrix();
@@ -188,6 +193,7 @@ public class TestScene extends Scene {
 		ModelStore.get("Model1").draw();
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
+		shader.unbind();
 	}
 
 	public void render2D() {
