@@ -39,33 +39,33 @@ public class EntityPlayerChar_1 extends EntityPlayer {
 			dx = (float) Math.sin(Math.toRadians(rot)) * 4f;
 			dz = (float) Math.cos(Math.toRadians(rot)) * 4f;
 		} else if ((!w && s && a == d)) {
-			rot = mouserot;
-			dx = (float) Math.sin(Math.toRadians(rot + 180)) * 4f;
-			dz = (float) Math.cos(Math.toRadians(rot + 180)) * 4f;
+			rot = mouserot + 180;
+			dx = (float) Math.sin(Math.toRadians(rot)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot)) * 4f;
 		} else if ((w == s && a && !d)) {
-			rot = mouserot;
-			dx = (float) Math.sin(Math.toRadians(rot + 90)) * 4f;
-			dz = (float) Math.cos(Math.toRadians(rot + 90)) * 4f;
+			rot = mouserot + 90;
+			dx = (float) Math.sin(Math.toRadians(rot)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot)) * 4f;
 		} else if ((w == s && !a && d)) {
-			rot = mouserot;
-			dx = (float) Math.sin(Math.toRadians(rot - 90)) * 4f;
-			dz = (float) Math.cos(Math.toRadians(rot - 90)) * 4f;
+			rot = mouserot - 90;
+			dx = (float) Math.sin(Math.toRadians(rot)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot)) * 4f;
 		} else if ((w && !s && !a && d)) {
-			rot = mouserot;
-			dx = (float) Math.sin(Math.toRadians(rot - 45)) * 4f;
-			dz = (float) Math.cos(Math.toRadians(rot - 45)) * 4f;
+			rot = mouserot - 45;
+			dx = (float) Math.sin(Math.toRadians(rot)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot)) * 4f;
 		} else if ((w && !s && a && !d)) {
-			rot = mouserot;
-			dx = (float) Math.sin(Math.toRadians(rot + 45)) * 4f;
-			dz = (float) Math.cos(Math.toRadians(rot + 45)) * 4f;
+			rot = mouserot + 45;
+			dx = (float) Math.sin(Math.toRadians(rot)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot)) * 4f;
 		} else if ((!w && s && a && !d)) {
-			rot = mouserot;
-			dx = (float) Math.sin(Math.toRadians(rot - 225)) * 4f;
-			dz = (float) Math.cos(Math.toRadians(rot - 225)) * 4f;
+			rot = mouserot - 225;
+			dx = (float) Math.sin(Math.toRadians(rot)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot)) * 4f;
 		} else if ((!w && s && !a && d)) {
-			rot = mouserot;
-			dx = (float) Math.sin(Math.toRadians(rot - 135)) * 4f;
-			dz = (float) Math.cos(Math.toRadians(rot - 135)) * 4f;
+			rot = mouserot - 135;
+			dx = (float) Math.sin(Math.toRadians(rot)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot)) * 4f;
 		} else {
 			dx = 0;
 			dz = 0;
