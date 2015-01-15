@@ -6,6 +6,8 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 import Chaos.Engine.Core.Scene;
+import Chaos.Util.Collision.ColHandle;
+import Chaos.Util.Collision.ColMap;
 import Chaos.Util.Model.Model;
 import Chaos.Util.Model.ModelStore;
 import Chaos.Util.Model.VBOHandle;
@@ -15,13 +17,16 @@ import Chaos.Util.Texture.TextureStore;
 public class GameScene extends Scene {
 	Camera cam = new Camera(0, 0, 0);
 	Shader shader;
+	ColMap cm;
 
 	public void create() {
 		try {
 			ModelStore.add("Map",
-					new Model(VBOHandle.load("./Resources/Char_1.vbo")));
-			TextureStore.put("Texture", new Texture("./Resources/palette.png"));
-			shader = new Shader("./Resources/ambient");
+					new Model(VBOHandle.load("./src/VoxelMOBA/Map.vbo")));
+			TextureStore.put("Texture", new Texture(
+					"./src/VoxelMOBA/palette.png"));
+			shader = new Shader("./src/VoxelMOBA/ambient");
+			cm = ColHandle.load("./src/VoxelMOBA/Map.col");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -39,6 +44,7 @@ public class GameScene extends Scene {
 	public void render3D() {
 		cam.lookThrough();
 		// Map
+		cm.drawDebug();
 		GL11.glPushMatrix();
 		shader.bind();
 		GL11.glColor3f(1, 1, 1);
