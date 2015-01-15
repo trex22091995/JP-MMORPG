@@ -12,7 +12,7 @@ import Chaos.Util.Model.VBOHandle;
 import Chaos.Util.Texture.Texture;
 import Chaos.Util.Texture.TextureStore;
 
-public class TestScene extends Scene {
+public class GameScene extends Scene {
 	Camera cam = new Camera(0, 0, 0);
 	Shader shader;
 

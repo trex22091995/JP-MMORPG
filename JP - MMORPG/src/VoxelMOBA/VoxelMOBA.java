@@ -7,13 +7,13 @@ import Chaos.Engine.Core.ChaosGame;
 import Chaos.Engine.Core.Resource;
 import Chaos.Util.Texture.Text;
 
-public class VoxelGame extends ChaosGame {
+public class VoxelMOBA extends ChaosGame {
 	// Start
 	public static void main(String[] args) {
-		new VoxelGame();
+		new VoxelMOBA();
 	}
 
-	public VoxelGame() {
+	public VoxelMOBA() {
 		// Init Code for the Engine
 		chaos = new Chaos(this);
 		chaos.setScreenSize(800, 600);
@@ -44,7 +44,7 @@ public class VoxelGame extends ChaosGame {
 	public void update(float delta) {
 		if (!hasScene) {
 			hasScene = true;
-			setScene(new TestScene());
+			setScene(new GameScene());
 		}
 		// rot += delta * 90;
 		// if (rot >= 360)
