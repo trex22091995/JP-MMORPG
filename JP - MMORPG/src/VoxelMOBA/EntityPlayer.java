@@ -18,7 +18,7 @@ public abstract class EntityPlayer extends Entity {
 	}
 
 	public final void poll(float delta) {
-		mouserot += Mouse.getDX();
+		mouserot -= Mouse.getDX() * 0.7f;
 		if (mouserot < 0) {
 			mouserot += 360;
 		}

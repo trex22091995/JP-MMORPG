@@ -30,8 +30,45 @@ public class EntityPlayerChar_1 extends EntityPlayer {
 		if (Keyboard.isKeyDown(Keyboard.KEY_SPACE) && ground) {
 			dy = 7;
 		}
-		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
+		boolean w = Keyboard.isKeyDown(Keyboard.KEY_W);
+		boolean a = Keyboard.isKeyDown(Keyboard.KEY_A);
+		boolean s = Keyboard.isKeyDown(Keyboard.KEY_S);
+		boolean d = Keyboard.isKeyDown(Keyboard.KEY_D);
+		if ((w && !s && a == d)) {
 			rot = mouserot;
+			dx = (float) Math.sin(Math.toRadians(rot)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot)) * 4f;
+		} else if ((!w && s && a == d)) {
+			rot = mouserot;
+			dx = (float) Math.sin(Math.toRadians(rot + 180)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot + 180)) * 4f;
+		} else if ((w == s && a && !d)) {
+			rot = mouserot;
+			dx = (float) Math.sin(Math.toRadians(rot + 90)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot + 90)) * 4f;
+		} else if ((w == s && !a && d)) {
+			rot = mouserot;
+			dx = (float) Math.sin(Math.toRadians(rot - 90)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot - 90)) * 4f;
+		} else if ((w && !s && !a && d)) {
+			rot = mouserot;
+			dx = (float) Math.sin(Math.toRadians(rot - 45)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot - 45)) * 4f;
+		} else if ((w && !s && a && !d)) {
+			rot = mouserot;
+			dx = (float) Math.sin(Math.toRadians(rot + 45)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot + 45)) * 4f;
+		} else if ((!w && s && a && !d)) {
+			rot = mouserot;
+			dx = (float) Math.sin(Math.toRadians(rot - 225)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot - 225)) * 4f;
+		} else if ((!w && s && !a && d)) {
+			rot = mouserot;
+			dx = (float) Math.sin(Math.toRadians(rot - 135)) * 4f;
+			dz = (float) Math.cos(Math.toRadians(rot - 135)) * 4f;
+		} else {
+			dx = 0;
+			dz = 0;
 		}
 	}
 }
